@@ -4,7 +4,6 @@ import './style.css';
 function TodoSearch ({ searchValue, setSearchValue }) {
     
     const onChangeValueSearch = (event) => {
-        console.log(event.target.value);
         setSearchValue(event.target.value);
     };
 
