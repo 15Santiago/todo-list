@@ -47,3 +47,12 @@
 .Icon-delete:hover {
     color: red;
 }
+
+.Icon-edit {
+    position: absolute;
+    right: 50px;
+}
+.Icon-edit:hover,  
+.TodoItem-edit--active{
+    color: #61dafb;
+}

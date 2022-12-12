@@ -1,15 +1,15 @@
 import React from 'react';
-import { UseTodos } from './UseTodos';
-import { TodoHeader } from '../TodoHeader';
-import { TodoCounter } from '../TodoCounter/index';
-import { TodoSearch } from '../TodoSearch/index';
-import { TodoList } from '../TodoList/index';
-import { TodoItem } from '../TodoItem/index';
-import { CreateTodoButton } from '../CreateTodoButton/index';
-import { Modal } from '../Modal/index'
-import { TodoForm } from '../TodoForm';
+import { UseTodos } from '../UseTodos';
+import { TodoHeader } from '../../UI/TodoHeader';
+import { TodoCounter } from '../../UI/TodoCounter';
+import { TodoSearch } from '../../UI/TodoSearch';
+import { TodoList } from '../../UI/TodoList';
+import { TodoItem } from '../../UI/TodoItem';
+import { CreateTodoButton } from '../../UI/CreateTodoButton';
+import { Modal } from '../../UI/Modal'
+import { TodoForm } from '../../UI/TodoForm';
 
-function App() {
+function HomePage() {
   const { 
     error, 
     loading, 
@@ -68,4 +68,4 @@ function App() {
   );
 }
 
-export  { App };
+export  { HomePage };
