@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocalStorage } from './UseLocalStorage'
+import { useLocalStorage } from './UseLocalStorage';
 
 function UseTodos () {
     const {
@@ -7,7 +7,7 @@ function UseTodos () {
         saveItem: saveTodos,
         loading,
         error,
-    } = useLocalStorage('TODOS_V1', []);
+    } = useLocalStorage('TODOS_V2', []);
     const [searchValue, setSearchValue] = React.useState('');
 
     const [openModal, setOpenModal] = React.useState(false);
@@ -27,28 +27,31 @@ function UseTodos () {
         });
     };
     
-    const completeTodo = (text) => {
-        const todoIndex = todos.findIndex(todo => todo.text === text);
+    const addTodo = (text) => {
+        const id = newTodoId(todos);
+        const newTodos = [...todos];
+        newTodos.push({
+            completed: false,
+            text: text,
+            id
+        });
+        saveTodos(newTodos);
+    };
+
+    const completeTodo = (id) => {
+        const todoIndex = todos.findIndex(todo => todo.id === id);
         const newTodos = [...todos];
         newTodos[todoIndex].complete = true;
         saveTodos(newTodos);
     };
     
-    const deleteTodo = (text) => {
-        const todoIndex = todos.findIndex(todo => todo.text === text);
+    const deleteTodo = (id) => {
+        const todoIndex = todos.findIndex(todo => todo.id === id);
         const newTodos = [...todos];
         newTodos.splice(todoIndex, 1);
         saveTodos(newTodos);
     };
 
-    const addTodo = (text) => {
-        const newTodos = [...todos];
-        newTodos.push({
-            completed: false,
-            text: text,
-        });
-        saveTodos(newTodos);
-    };
     return (
         {
             error,
@@ -65,6 +68,16 @@ function UseTodos () {
             setOpenModal,
         }
     );
+};
+
+function newTodoId (listTodos) {
+    if (listTodos.length === 0) {
+        return 1;
+    };
+
+    const idList = listTodos.map(todo => todo.id);
+    const maxId = Math.max(...idList);
+    return maxId + 1;
 };
 
 export { UseTodos };
