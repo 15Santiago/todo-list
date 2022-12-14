@@ -17,6 +17,7 @@ function TodoItem (props) {
             >X</span>
             <span
                 className={`Icon Icon-edit ${props.edit && 'TodoItem-edit--active'}`}
+                onClick={props.onEdit}
             >Edit</span>
         </li>
     );
