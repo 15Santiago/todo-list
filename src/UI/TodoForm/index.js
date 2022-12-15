@@ -6,10 +6,10 @@ function TodoForm ({
     submitEvent, 
     title, 
     titleButton, 
-    textToEdit
+    textToEdit,
     }){
 
-    const [newTodoValue, setNewTodoValue] = React.useState('');
+    const [newTodoValue, setNewTodoValue] = React.useState(textToEdit || '');
     const navigate = useNavigate();
 
     const onWrite = (event) => {
